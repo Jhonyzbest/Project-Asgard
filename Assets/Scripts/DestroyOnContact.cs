@@ -1,11 +1,11 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
 public class DestroyOnContact : MonoBehaviour {
-
+    private Score score;
 	// Use this for initialization
 	void Start () {
-	
+        score = GameObject.Find("Main Camera").GetComponent<Score>();
 	}
 	
 	// Update is called once per frame
@@ -21,5 +21,10 @@ public class DestroyOnContact : MonoBehaviour {
         }
         Destroy(other.gameObject);
         Destroy(gameObject);
+    }
+
+    void OnDestroy()
+    {
+        score.UpdateScore();        
     }
 }
